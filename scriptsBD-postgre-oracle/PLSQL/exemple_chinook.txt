@@ -1,0 +1,12 @@
+CREATE OR REPLACE PROCEDURE Augmentation (UnitPrice in
+number) AS
+Augm number;
+BEGIN
+IF UnitPrice > 100 THEN Augm := 0.2;
+ELSE
+Augm := 0.1;
+END IF;
+UPDATE Track SET UnitPrice = UnitPrice*(1+Augm);
+Commit;
+END;
+

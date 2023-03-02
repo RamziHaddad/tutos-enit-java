@@ -1,0 +1,158 @@
+[2020-12-27 20:50:51] INFO [liquibase.integration] No Liquibase Pro license key supplied. Please set liquibaseProLicenseKey on command line or in liquibase.properties to use Liquibase Pro features.
+[2020-12-27 20:50:51] INFO [liquibase.command] 
+When generating formatted SQL changelogs, it is important to decide if batched statements
+should be split (splitStatements:true is the default behavior) or not (splitStatements:false).
+See http://liquibase.org for additional documentation.
+
+[2020-12-27 20:50:52] INFO [liquibase.diff] changeSets count: 14
+[2020-12-27 20:50:52] INFO [liquibase.diff] formation-postgresql-changelog.sql does not exist, creating and adding 14 changesets.
+[2020-12-27 20:52:27] INFO [liquibase.integration] No Liquibase Pro license key supplied. Please set liquibaseProLicenseKey on command line or in liquibase.properties to use Liquibase Pro features.
+[2020-12-27 20:54:19] INFO [liquibase.integration] No Liquibase Pro license key supplied. Please set liquibaseProLicenseKey on command line or in liquibase.properties to use Liquibase Pro features.
+[2020-12-27 20:54:20] INFO [liquibase.lockservice] Successfully acquired change log lock
+[2020-12-27 20:54:20] INFO [liquibase.changelog] Creating database history table with name: public.databasechangelog
+[2020-12-27 20:54:20] INFO [liquibase.changelog] Reading from public.databasechangelog
+[2020-12-27 20:54:20] INFO [liquibase.lockservice] Successfully released change log lock
+[2020-12-27 20:54:20] SEVERE [liquibase.integration] Unexpected error running Liquibase: Migration failed for change set formation-postgresql-changelog.sql::1609098652479-1::Ramzi:
+     Reason: liquibase.exception.DatabaseException: ERREUR: la relation « countries » existe déjà [Failed SQL: (0) CREATE TABLE "public"."countries" ("country_id" CHAR(2) NOT NULL, "country_name" VARCHAR(40), "region_id" INTEGER NOT NULL, CONSTRAINT "countries_pkey" PRIMARY KEY ("country_id"))]
+liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set formation-postgresql-changelog.sql::1609098652479-1::Ramzi:
+     Reason: liquibase.exception.DatabaseException: ERREUR: la relation « countries » existe déjà [Failed SQL: (0) CREATE TABLE "public"."countries" ("country_id" CHAR(2) NOT NULL, "country_name" VARCHAR(40), "region_id" INTEGER NOT NULL, CONSTRAINT "countries_pkey" PRIMARY KEY ("country_id"))]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:124)
+	at liquibase.Liquibase.lambda$null$0(Liquibase.java:275)
+	at liquibase.Scope.lambda$child$0(Scope.java:160)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.Scope.child(Scope.java:159)
+	at liquibase.Scope.child(Scope.java:138)
+	at liquibase.Scope.child(Scope.java:222)
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:274)
+	at liquibase.Scope.lambda$child$0(Scope.java:160)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.Scope.child(Scope.java:159)
+	at liquibase.Scope.child(Scope.java:138)
+	at liquibase.Liquibase.runInScope(Liquibase.java:2277)
+	at liquibase.Liquibase.update(Liquibase.java:215)
+	at liquibase.Liquibase.update(Liquibase.java:201)
+	at liquibase.integration.commandline.Main.doMigration(Main.java:1761)
+	at liquibase.integration.commandline.Main$1.lambda$run$0(Main.java:361)
+	at liquibase.Scope.lambda$child$0(Scope.java:160)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.Scope.child(Scope.java:159)
+	at liquibase.Scope.child(Scope.java:138)
+	at liquibase.Scope.child(Scope.java:222)
+	at liquibase.Scope.child(Scope.java:226)
+	at liquibase.integration.commandline.Main$1.run(Main.java:360)
+	at liquibase.integration.commandline.Main$1.run(Main.java:193)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.Scope.child(Scope.java:145)
+	at liquibase.integration.commandline.Main.run(Main.java:193)
+	at liquibase.integration.commandline.Main.main(Main.java:156)
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for change set formation-postgresql-changelog.sql::1609098652479-1::Ramzi:
+     Reason: liquibase.exception.DatabaseException: ERREUR: la relation « countries » existe déjà [Failed SQL: (0) CREATE TABLE "public"."countries" ("country_id" CHAR(2) NOT NULL, "country_name" VARCHAR(40), "region_id" INTEGER NOT NULL, CONSTRAINT "countries_pkey" PRIMARY KEY ("country_id"))]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:670)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:49)
+	at liquibase.changelog.ChangeLogIterator$2.lambda$null$0(ChangeLogIterator.java:111)
+	at liquibase.Scope.lambda$child$0(Scope.java:160)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.Scope.child(Scope.java:159)
+	at liquibase.Scope.child(Scope.java:138)
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$1(ChangeLogIterator.java:110)
+	at liquibase.Scope.lambda$child$0(Scope.java:160)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.Scope.child(Scope.java:159)
+	at liquibase.Scope.child(Scope.java:138)
+	at liquibase.Scope.child(Scope.java:222)
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:94)
+	at liquibase.Scope.lambda$child$0(Scope.java:160)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.Scope.child(Scope.java:159)
+	at liquibase.Scope.child(Scope.java:138)
+	at liquibase.Scope.child(Scope.java:222)
+	at liquibase.Scope.child(Scope.java:226)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:66)
+	... 28 more
+Caused by: liquibase.exception.DatabaseException: ERREUR: la relation « countries » existe déjà [Failed SQL: (0) CREATE TABLE "public"."countries" ("country_id" CHAR(2) NOT NULL, "country_name" VARCHAR(40), "region_id" INTEGER NOT NULL, CONSTRAINT "countries_pkey" PRIMARY KEY ("country_id"))]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:398)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:82)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:154)
+	at liquibase.database.AbstractJdbcDatabase.execute(AbstractJdbcDatabase.java:1272)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1254)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:635)
+	... 48 more
+Caused by: org.postgresql.util.PSQLException: ERREUR: la relation « countries » existe déjà
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2553)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2285)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:323)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:473)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:393)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:322)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:308)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:284)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:279)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:394)
+	... 53 more
+
+[2020-12-27 20:54:58] INFO [liquibase.integration] No Liquibase Pro license key supplied. Please set liquibaseProLicenseKey on command line or in liquibase.properties to use Liquibase Pro features.
+[2020-12-27 20:54:59] INFO [liquibase.lockservice] Successfully acquired change log lock
+[2020-12-27 20:54:59] INFO [liquibase.changelog] Reading from public.databasechangelog
+[2020-12-27 20:54:59] INFO [liquibase.lockservice] Successfully released change log lock
+[2020-12-27 21:07:42] INFO [liquibase.integration] No Liquibase Pro license key supplied. Please set liquibaseProLicenseKey on command line or in liquibase.properties to use Liquibase Pro features.
+[2020-12-27 21:10:40] INFO [liquibase.integration] No Liquibase Pro license key supplied. Please set liquibaseProLicenseKey on command line or in liquibase.properties to use Liquibase Pro features.
+[2020-12-27 21:10:40] INFO [liquibase.changelog] Reading from public.databasechangelog
+[2020-12-27 21:10:54] INFO [liquibase.integration] No Liquibase Pro license key supplied. Please set liquibaseProLicenseKey on command line or in liquibase.properties to use Liquibase Pro features.
+[2020-12-27 21:10:55] INFO [liquibase.lockservice] Successfully acquired change log lock
+[2020-12-27 21:10:55] INFO [liquibase.changelog] Reading from public.databasechangelog
+[2020-12-27 21:10:55] INFO [liquibase.changelog] Custom SQL executed
+[2020-12-27 21:10:55] INFO [liquibase.changelog] ChangeSet formation-postgresql-changelog.sql::1::ramzi ran successfully in 14ms
+[2020-12-27 21:10:55] INFO [liquibase.lockservice] Successfully released change log lock
+[2020-12-27 21:14:50] INFO [liquibase.integration] No Liquibase Pro license key supplied. Please set liquibaseProLicenseKey on command line or in liquibase.properties to use Liquibase Pro features.
+[2020-12-27 21:14:50] INFO [liquibase.changelog] Reading from public.databasechangelog
+[2020-12-27 21:15:04] INFO [liquibase.integration] No Liquibase Pro license key supplied. Please set liquibaseProLicenseKey on command line or in liquibase.properties to use Liquibase Pro features.
+[2020-12-27 21:15:05] INFO [liquibase.lockservice] Successfully acquired change log lock
+[2020-12-27 21:15:05] INFO [liquibase.changelog] Reading from public.databasechangelog
+[2020-12-27 21:15:05] INFO [liquibase.changelog] Custom SQL executed
+[2020-12-27 21:15:05] INFO [liquibase.changelog] ChangeSet formation-postgresql-changelog.sql::2::ramzi ran successfully in 10ms
+[2020-12-27 21:15:05] INFO [liquibase.lockservice] Successfully released change log lock
+[2020-12-28 12:02:27] INFO [liquibase.integration] No Liquibase Pro license key supplied. Please set liquibaseProLicenseKey on command line or in liquibase.properties to use Liquibase Pro features.
+[2020-12-28 12:02:28] INFO [liquibase.changelog] Reading from public.databasechangelog
+[2020-12-28 12:04:46] INFO [liquibase.integration] No Liquibase Pro license key supplied. Please set liquibaseProLicenseKey on command line or in liquibase.properties to use Liquibase Pro features.
+[2020-12-28 12:09:13] INFO [liquibase.integration] No Liquibase Pro license key supplied. Please set liquibaseProLicenseKey on command line or in liquibase.properties to use Liquibase Pro features.
+[2020-12-28 12:09:14] INFO [liquibase.changelog] Reading from public.databasechangelog
+[2020-12-28 12:09:14] SEVERE [liquibase.integration] Unexpected error running Liquibase: Validation Failed:
+     1 change sets check sum
+          formation-postgresql-changelog.sql::2::ramzi was: 8:b47f142ed2aed1557739e0d33d4e494f but is now: 8:a6fcc7e25c92cac2db6ef20a09dd9e70
+
+liquibase.exception.ValidationFailedException: Validation Failed:
+     1 change sets check sum
+          formation-postgresql-changelog.sql::2::ramzi was: 8:b47f142ed2aed1557739e0d33d4e494f but is now: 8:a6fcc7e25c92cac2db6ef20a09dd9e70
+
+	at liquibase.changelog.DatabaseChangeLog.validate(DatabaseChangeLog.java:298)
+	at liquibase.Liquibase$18.run(Liquibase.java:1860)
+	at liquibase.Scope.lambda$child$0(Scope.java:160)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.Scope.child(Scope.java:159)
+	at liquibase.Scope.child(Scope.java:138)
+	at liquibase.Liquibase.runInScope(Liquibase.java:2277)
+	at liquibase.Liquibase.listUnrunChangeSets(Liquibase.java:1850)
+	at liquibase.Liquibase.reportStatus(Liquibase.java:1927)
+	at liquibase.integration.commandline.Main.doMigration(Main.java:1720)
+	at liquibase.integration.commandline.Main$1.lambda$run$0(Main.java:361)
+	at liquibase.Scope.lambda$child$0(Scope.java:160)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.Scope.child(Scope.java:159)
+	at liquibase.Scope.child(Scope.java:138)
+	at liquibase.Scope.child(Scope.java:222)
+	at liquibase.Scope.child(Scope.java:226)
+	at liquibase.integration.commandline.Main$1.run(Main.java:360)
+	at liquibase.integration.commandline.Main$1.run(Main.java:193)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.Scope.child(Scope.java:145)
+	at liquibase.integration.commandline.Main.run(Main.java:193)
+	at liquibase.integration.commandline.Main.main(Main.java:156)
+
+[2020-12-28 12:09:31] INFO [liquibase.integration] No Liquibase Pro license key supplied. Please set liquibaseProLicenseKey on command line or in liquibase.properties to use Liquibase Pro features.
+[2020-12-28 12:09:32] INFO [liquibase.changelog] Reading from public.databasechangelog
+[2020-12-28 12:10:50] INFO [liquibase.integration] No Liquibase Pro license key supplied. Please set liquibaseProLicenseKey on command line or in liquibase.properties to use Liquibase Pro features.
+[2020-12-28 12:10:51] INFO [liquibase.lockservice] Successfully acquired change log lock
+[2020-12-28 12:10:51] INFO [liquibase.changelog] Reading from public.databasechangelog
+[2020-12-28 12:10:51] INFO [liquibase.changelog] Custom SQL executed
+[2020-12-28 12:10:51] INFO [liquibase.changelog] ChangeSet formation-postgresql-changelog.sql::3::ramzi ran successfully in 10ms
+[2020-12-28 12:10:51] INFO [liquibase.lockservice] Successfully released change log lock

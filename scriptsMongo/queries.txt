@@ -1,0 +1,176 @@
+show dbs;
+create database 08-formation-mongodb;
+use 08-formation-mongodb;
+db
+show collections;
+
+db.persons.insert(
+{
+ emails: ["email1@example.com","email1@example.com"],
+ name: "haddad",
+ firstName: "Ramzi",
+ age: 35,
+ addresses: [{label: "home",
+              street: "123 rue A",
+              city: "Ariana",
+              state: "Ariana",
+              zip: "2000",
+              country: "TN"},
+             {label: "work",
+              street: "enit",
+              city: "Tunis",
+              province: "Nord",
+              country: "TN"}]
+}
+);
+
+db.persons.insert(
+{
+ emails: ["wchaieb@iga.fr","wchaieb@enit.tn"],
+ name: "chaieb",
+ firstName: "walid",
+ age: 22,
+ addresses: [{label: "work",
+              street: "2iga",
+              city: "Tunis",
+              country: "TN"}]
+}
+);
+
+db.persons.insert(
+{
+ emails: ["ramzi@iga.fr","ramzi@enit.tn"],
+ name: "chaiabcdeb",
+ firstName: "ramzi",
+ age: 25,
+ addresses: [{label: "work",
+              street: "2iga",
+              city: "Tunis",
+              country: "TN"}]
+}
+);
+
+
+
+db.persons.insert(
+{
+ name: "test",
+ firstName: "test",
+ age: 41,
+}
+);
+
+
+db.persons.findOne();
+db.persons.find();
+db.persons.find().limit(10)
+db.persons.count();
+
+db.persons.findOne({_id: ObjectId("5fe3b0cc3f600c26995863a4")})
+
+
+//écrase le document
+//on peututiliser updateOne car le filtre c'est l'id
+db.persons.update(
+	{_id: ObjectId("5fe3b0cc3f600c26995863a4")},
+	{
+ emails: ["email1@example.com","email2@example.com"],
+ addresses: [{label: "home",
+              street: "123 rue ABC",
+              city: "Ariana",
+              state: "Ariana",
+              zip: "2000",
+              country: "TN"},
+             {label: "work",
+              street: "enit",
+              city: "Tunis",
+              province: "Nord",
+              country: "TN"}]
+}
+	)
+
+
+db.persons.update(
+	{_id: ObjectId("5fe3b0cc3f600c26995863a4")},
+{
+ emails: ["email1@example.com","email1@example.com"],
+ name: "haddad",
+ firstName: "Ramzi",
+ age: 35,
+ addresses: [{label: "home",
+              street: "123 rue A",
+              city: "Ariana",
+              state: "Ariana",
+              zip: "2000",
+              country: "TN"},
+             {label: "work",
+              street: "enit",
+              city: "Tunis",
+              province: "Nord",
+              country: "TN"}]
+}
+	)
+	
+
+
+//replace remplace juste ce qui est mentionné
+
+db.persons.update(
+	{_id: ObjectId("5fe3b0cc3f600c26995863a4")},
+	{
+ $set:{
+ emails: ["email1@example.com","email2@example.com"],
+ addresses: [{label: "home",
+              street: "123 rue ABC",
+              city: "Manouba",
+              state: "Ariana",
+              zip: "2000",
+              country: "TN"},
+             {label: "work",
+              street: "enit",
+              city: "Tunis",
+              province: "Nord",
+              country: "TN"}
+			]
+		}
+	}
+	)
+
+
+//
+
+db.persons.find({"firstName": "Ramzi"}).count()
+db.persons.find({firstName: "Ramzi"}).count()
+db.persons.find({"firstName": "Ramzi"}).collation({locale: 'en',strength: 2 }).count()
+
+db.persons.find({age: {$gt: 25}}).count()
+db.persons.find({age: {$gte: 25}}).count()
+db.persons.find({age: {$ne: 25}}).count()
+
+db.persons.find({age: {$gt: 24, $lt:30}}).count()
+
+
+db.persons.find().sort({age: 1})
+db.persons.find().sort({age: -1})
+
+db.persons.createIndex({age: 1})
+
+db.persons.createIndex({email: 1}, {unique: true})
+
+
+db.persons.find({emails: "ramzi@iga.fr"})
+
+
+db.persons.find({addresses: {$elemMatch: {label: "home"}}})
+db.persons.find({addresses.0: {$elemMatch: {label: "home"}}})
+
+db.persons.find( { "addresses": { $size: 1 } } ).count()
+
+
+db.persons.find( { "addresses": { $exists: true, $not: {$size: 0} } } ).count()
+
+db.persons.find( { "addresses": { $exists: false} } ).count()
+
+db.persons.find( { $or: [{addresses: { $exists: false}}, {addresses:{$size: 0}}] } ).count()
+
+{ $or: [ { <expression1> }, { <expression2> }, ... , { <expressionN> } ] }
