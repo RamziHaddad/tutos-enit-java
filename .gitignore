@@ -13,3 +13,5 @@ buildNumber.properties
 .*
 bin
 brouillon
+.classpath
+.project
