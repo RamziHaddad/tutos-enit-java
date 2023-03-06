@@ -7,7 +7,7 @@ public class Main {
 		LecteurFichierTexte l = new Lecteur1();
 		List<String> mots = l.getMots("testDocuments/t8.churchill.txt");
 		System.out.println("Nombre de mots total = "+mots.size());
-		AnalyseurTexte c = new Compteur1();
+		AnalyseurTexte c = new Compteur4();
 		long start = System.currentTimeMillis();
 		Map<String, Long> occurrencesParMot = c.occurrencesParMot(mots);
 		long stop = System.currentTimeMillis();
