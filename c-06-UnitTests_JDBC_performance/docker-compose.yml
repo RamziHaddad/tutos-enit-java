@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  db:
+    container_name: db
+    image: postgres:12
+    environment:
+      POSTGRES_DB: HR
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: azerty
+    volumes:
+      - ./env/postgresql/HR-postgresql-schema-and-data.sql:/docker-entrypoint-initdb.d/init_db.sql
+    ports:
+      - 5432:5432
